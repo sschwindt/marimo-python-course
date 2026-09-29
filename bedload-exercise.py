@@ -1,3 +1,11 @@
+# /// script
+# dependencies = [
+#     "marimo",
+#     "matplotlib",
+#     "numpy",
+#     "pandas",
+# ]
+# ///
 import marimo
 
 __generated_with = "0.25.0"
@@ -53,7 +61,7 @@ def _(mo):
 
 
 @app.cell
-def _():
+async def _():
     import os, sys, urllib.request
     if "google.colab" in sys.modules:  # uniquement sur Google Colab : télécharge le script et les données
         for f in ("fun/charriage.py", "data/hecras-arbogne.csv"):
@@ -62,6 +70,11 @@ def _():
                 f"https://raw.githubusercontent.com/hydro-informatics/jupyter-python-course/main/{f}", f)
 
     from fun import charriage as ch   # fun/charriage.py, lit data/hecras-arbogne.csv
+    if sys.platform == "emscripten" and not ch.HECRAS.exists():  # version WebAssembly (navigateur) : télécharge les données
+        from pyodide.http import pyfetch as _pyfetch
+        _response = await _pyfetch(
+            "https://raw.githubusercontent.com/sschwindt/marimo-python-course/main/data/hecras-arbogne.csv")
+        ch.HECRAS.write_bytes(await _response.bytes())
     ch.lire_hecras()
     return (ch,)
 

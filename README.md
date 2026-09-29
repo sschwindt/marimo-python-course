@@ -63,6 +63,20 @@ The notebooks are converted from the Jupyter versions in [jupyter-python-course]
 - Shell commands such as `pip install cmocean` belong in a terminal, not in a notebook cell.
 - `b11-gui.py` opens desktop (tkinter) windows, and `geo-arcpy.py` needs the Python environment of ESRI's ArcGIS Pro with marimo installed into it.
 
+## WebAssembly (browser) versions
+
+The `*.wasm.html` files in the repository root run the notebooks in the browser with [Pyodide](https://pyodide.org), without a local Python installation (served through GitHub Pages; `.nojekyll` keeps the `assets/` folder intact). In the browser, notebooks that read course data (`b06`, `b07`, `b10`, `bedload-exercise`) download these files from this repository on GitHub (`raw.githubusercontent.com/sschwindt/marimo-python-course/main/`), so data changes take effect after pushing to `main`. The PEP 723 `# /// script` header of these notebooks lists packages that Pyodide does not detect or ship (e.g., `openpyxl`, `plotly`).
+
+`b11-gui.py` (tkinter), `geo-arcpy.py` (arcpy), and `geo01` to `geo03` (GDAL's `osgeo`) cannot run in Pyodide and have no browser version.
+
+To re-export a notebook:
+
+```
+marimo export html-wasm b06-pynum.py -o b06-pynum.wasm.html --mode edit -f
+```
+
+Every export empties `public/wheels/`, where marimo bundles the local `fun` package for `b06-pynum` and `bedload-exercise`. After exporting, re-export these two notebooks into separate folders and copy their wheels back into `public/wheels/`.
+
 ## Updating from the Jupyter notebooks
 
 `tools/to_marimo.py` regenerates all notebooks from a local clone of jupyter-python-course, including the fixes listed above (`CODE_PATCHES` and `MD_PATCHES`), and runs `marimo check` on each result:

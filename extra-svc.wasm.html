@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>extra-svc</title>
+    <script type="module" crossorigin src="./assets/index-CgQsZfww.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-B0Z9INg1.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-CUdNIagt.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-BQ9S8nyo.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-Dc9HkKI2.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-CKsE8sC1.js">
+    <link rel="modulepreload" crossorigin href="./assets/schemas-BL-NsLlF.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-BCaOs5rp.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-oX0TOjjx.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-Cmx0b_zA.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-aFmHgJZY.js">
+    <link rel="modulepreload" crossorigin href="./assets/isArrayLikeObject-DnwgSs_Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseMerge-CQpUq7ep.js">
+    <link rel="modulepreload" crossorigin href="./assets/objects-snlMn4yk.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-B74pBk57.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-BdZUApHd.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-Ci2dTZ72.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-B3E7otfg.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-BDbGiS7O.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CrTnjj37.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-C8nQMsOE.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-CmBpjGXk.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-DB0hHKMi.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-ldLVeaqm.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-BmzAqMKq.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CyYN7zJg.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-BBdeXCvU.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-restore-focus-B98SEiGc.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-BoklZTGL.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-rHn2EdoM.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-Wea4hZ6R.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-BFOBKCJB.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-C4-_TnkF.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-BplWpfFo.js">
+    <link rel="modulepreload" crossorigin href="./assets/circle-CeQt3rdW.js">
+    <link rel="modulepreload" crossorigin href="./assets/toast-KNfsFUiB.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-DR2Z2N4w.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-CzfpItSz.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-DKSBdWUf.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-BbJ1_N2T.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-CrkOvbyN.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-CeE3i3Qa.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-BqUx5USx.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-Haz_uxEL.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-DsgsDslU.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-DMbg9X18.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-BDakodZ2.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-CC89xOwH.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-yTHMxhVa.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-k9DpjH68.js">
+    <link rel="modulepreload" crossorigin href="./assets/write-secret-modal-CBUZw27N.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-gbN72xHe.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-BJG-7Qob.js">
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-HclGiUj8.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BczecT6V.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BTskHGpb.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-Bj3s1hGN.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-C49f7GXV.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-BPvK7C_R.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Ccyblc8N.js">
+    <link rel="modulepreload" crossorigin href="./assets/marked.esm-B_3iMIUq.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-BHZPE0Mc.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BN-7G8qZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-DFf033uX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CiUBikfn.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-MRn68vX1.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Bviq_Dee.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DBqBVprh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DueXZKz9.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-CJTNBbet.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-Ho3YdAx3.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-DucTwMkf.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-CYRiAeUx.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-BcQ8Tm3j.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-DjNf4SIX.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-RyCOE8jo.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-BhJktFeI.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-DFhUGBjO.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-DrliQ_7g.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-CMqNngzA.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-DOPs2jx8.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-VuyoeQOD.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-EBegnOE0.js">
+    <link rel="modulepreload" crossorigin href="./assets/hat-glasses-DVgK5i5l.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-BeYhVWvM.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-D9vyuMar.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-CNPGWpMu.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-Bq_nmf5u.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-D5bOh7g6.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-CLRkNgm7.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-B1vGi-z4.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-D9Dr-k4J.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-YOKDWASO-CaoEAGJk.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-0PFKL3SH.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-2TQenOiQ.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "import marimo\n\n__generated_with = \"0.25.0\"\napp = marimo.App()\n\n\n@app.cell\ndef _():\n    import marimo as mo\n\n    return (mo,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## Import data set\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    import numpy as np\n    import pandas as pd\n    import matplotlib.pyplot as plt\n    from sklearn.datasets import load_wine # example dataset for wine classification\n    from sklearn.model_selection import train_test_split # function to split testing and training datasets\n    from sklearn.svm import SVC # class Support Vector Machine\n    from sklearn.model_selection import validation_curve # function too stract error through validation\n    from sklearn.metrics import ConfusionMatrixDisplay # class to plot confusion matrix\n\n\n    data = load_wine(as_frame=True, # return only data as tuple (parametrs, target)\n                     return_X_y=True # return as pandas dataframe\n                    )\n    df_wine_predictors = data[0]\n    df_wine_target = data[1]\n\n\n    # Visualize \n    print(\"PREDICTORS (X) \\n\")\n    print(df_wine_predictors.head())\n    print(\"Number of predictors:\", df_wine_predictors.shape[1])\n    print(\"Number of samples:\", df_wine_predictors.shape[0])\n    print(\"--------------------------------------------------------\\n\")\n\n    print(\"TARGET CLASSES (Y)  \\n\")\n    print(df_wine_target.head(),\"\\n\") \n    print(\"----------------------------------------------------------\")\n    print(\"Wine Classes: {} --\u003E\u003E [0: bad wine, 1: goof wine, 2:excellent wine]\".format(df_wine_target.unique()))\n    return (\n        ConfusionMatrixDisplay,\n        SVC,\n        df_wine_predictors,\n        df_wine_target,\n        np,\n        pd,\n        plt,\n        train_test_split,\n        validation_curve,\n    )\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## Check the data\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(df_wine_predictors):\n    # Basic check for errors in the dataset\n    print(\"Verify the type of data within the columns:\\n\")\n    print(df_wine_predictors.dtypes,\"\\n\")\n    df_wine_predictors.columns.to_list()\n\n    print(\"----------------------------------------\")\n \n    print(\"Check for NaN under the columns:\\n\")\n    for column in df_wine_predictors.columns.to_list():\n        print(column,\":\",df_wine_predictors[column].isnull().any())\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Split training and testing sets\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(df_wine_predictors, df_wine_target, train_test_split):\n    X_train, X_test, y_train, y_test = train_test_split(df_wine_predictors,  \n                                                        df_wine_target,\n                                                        test_size=0.33, # percentage of data that goes into the testing set\n                                                        random_state=42 # seed for random selection of data\n                                                       )\n\n    # visualize\n    print(\"TRAINING DATASET PREDICTORS\")\n    print(X_train.head(), \"\\n\")\n    print(\"dataframe size\", X_train.shape,\"\\n\")\n    print(\"------------------------------------------\")\n    print(\"TRAINING DATASET TARGET\")\n    print(y_train,\"\\n\")\n    print()\n    print(\"------------------------------------------------------------------------------------\\n\")\n\n    print(\"TESTING DATASET PREDICTORS\")\n    print(X_test.head())\n    print(\"dataframe size\", X_test.shape,\"\\n\")\n    print(\"------------------------------------------\")\n    print(\"TESTING DATASET TARGET\")\n    print(y_test.head())\n    print(\"Vector size\", y_test.shape)\n    return X_test, X_train, y_test, y_train\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## k-fold Cross Validation\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(SVC, X_train, np, plt, validation_curve, y_train):\n    # interval of possible parameters \n    param_range = np.logspace(-7, -0.01, 20) \n\n    # Peform 5-fold cross-validation and save training and validation error\n    train_scores, test_scores = validation_curve(\n        SVC(),\n        X_train, \n        y_train,\n        param_name=\"gamma\", # parameter to vary\n        param_range=param_range,\n        scoring=\"accuracy\", \n        cv=5,    # number of folders\n    )\n\n\n    # convert accuracy into error\n    train_error = 1-train_scores\n    validation_error = 1-test_scores\n\n    # compute 5-fold cross-validation mean and std of error \n    train_error_mean = np.mean(train_error, axis=1)\n    train_error_std = np.std(train_error, axis=1)\n    validation_error_mean = np.mean(validation_error, axis=1)\n    validation_error_std = np.std(validation_error, axis=1)\n\n    # visualize\n    plt.title(\"Validation Curve with SVM\")\n    plt.xlabel(r\"$\\gamma$\")\n    plt.ylabel(\"Error (1-accuracy)\")\n    plt.ylim(-0.01, 1.1)\n    lw = 2\n    plt.semilogx(\n        param_range, train_error_mean, label=\"Training score\", color=\"darkorange\", lw=lw\n    )\n    plt.fill_between(\n        param_range,\n        train_error_mean - train_error_std,\n        train_error_mean + train_error_std,\n        alpha=0.2,\n        color=\"darkorange\",\n        lw=lw,\n    )\n    plt.semilogx(\n        param_range, validation_error_mean, label=\"Cross-validation score\", color=\"navy\", lw=lw\n    )\n    plt.fill_between(\n        param_range,\n        validation_error_mean - validation_error_std,\n        validation_error_mean + validation_error_std,\n        alpha=0.2,\n        color=\"navy\",\n        lw=lw,\n    )\n    plt.legend(loc=\"best\")\n    plt.show()\n    return param_range, validation_error_mean\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## Choose optimal parameter\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(np, param_range, pd, validation_error_mean):\n    # save optimal gamma\n    index_min = min(range(len(validation_error_mean)), key=validation_error_mean.__getitem__)\n    validation_error_min = validation_error_mean[index_min]\n    gamma_opt = param_range[index_min] # gamma that gives minimun validation error\n\n    # visualize \n    columns = [\"Mean validation error\",\"gamma\"]\n    array = np.array([validation_error_mean, param_range]).transpose()\n\n    print( pd.DataFrame(array,columns=columns), \"\\n\")\n    print(\"Minimun mean validation error:\", validation_error_min)\n    print(\"optimal gamma:\", gamma_opt)\n    return (gamma_opt,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## Train the optimal hypothesis model\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(SVC, X_test, X_train, gamma_opt, y_test, y_train):\n    # train optimal model and evaluate accuracy \n    h_opt = SVC(gamma=gamma_opt) # instiate optimal model \n    h_opt.fit(X_train,y_train) # train the model to the entire training set\n    print(\"Error (1-Accuracy) of h_opt on testing data: \\n --\u003E\u003E\",1- h_opt.score(X_test,y_test))\n    return (h_opt,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## Performance evaluation\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(ConfusionMatrixDisplay, X_test, h_opt, plt, y_test):\n    #plot confution Matrix\n    ConfusionMatrixDisplay.from_estimator(\n        h_opt, # trained optimal hypothesis model\n        X_test,\n        y_test,\n        display_labels=[\"bad wine\", \"good wine\", \"excellent wine\"]\n    )\n    plt.show()\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.25.0%22%0Aapp%20%3D%20marimo.App()%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%0A%20%20%20%20return%20(mo%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Import%20data%20set%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20numpy%20as%20np%0A%20%20%20%20import%20pandas%20as%20pd%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20from%20sklearn.datasets%20import%20load_wine%20%23%20example%20dataset%20for%20wine%20classification%0A%20%20%20%20from%20sklearn.model_selection%20import%20train_test_split%20%23%20function%20to%20split%20testing%20and%20training%20datasets%0A%20%20%20%20from%20sklearn.svm%20import%20SVC%20%23%20class%20Support%20Vector%20Machine%0A%20%20%20%20from%20sklearn.model_selection%20import%20validation_curve%20%23%20function%20too%20stract%20error%20through%20validation%0A%20%20%20%20from%20sklearn.metrics%20import%20ConfusionMatrixDisplay%20%23%20class%20to%20plot%20confusion%20matrix%0A%0A%0A%20%20%20%20data%20%3D%20load_wine(as_frame%3DTrue%2C%20%23%20return%20only%20data%20as%20tuple%20(parametrs%2C%20target)%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20return_X_y%3DTrue%20%23%20return%20as%20pandas%20dataframe%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20)%0A%20%20%20%20df_wine_predictors%20%3D%20data%5B0%5D%0A%20%20%20%20df_wine_target%20%3D%20data%5B1%5D%0A%0A%0A%20%20%20%20%23%20Visualize%20%0A%20%20%20%20print(%22PREDICTORS%20(X)%20%5Cn%22)%0A%20%20%20%20print(df_wine_predictors.head())%0A%20%20%20%20print(%22Number%20of%20predictors%3A%22%2C%20df_wine_predictors.shape%5B1%5D)%0A%20%20%20%20print(%22Number%20of%20samples%3A%22%2C%20df_wine_predictors.shape%5B0%5D)%0A%20%20%20%20print(%22--------------------------------------------------------%5Cn%22)%0A%0A%20%20%20%20print(%22TARGET%20CLASSES%20(Y)%20%20%5Cn%22)%0A%20%20%20%20print(df_wine_target.head()%2C%22%5Cn%22)%20%0A%20%20%20%20print(%22----------------------------------------------------------%22)%0A%20%20%20%20print(%22Wine%20Classes%3A%20%7B%7D%20--%3E%3E%20%5B0%3A%20bad%20wine%2C%201%3A%20goof%20wine%2C%202%3Aexcellent%20wine%5D%22.format(df_wine_target.unique()))%0A%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20ConfusionMatrixDisplay%2C%0A%20%20%20%20%20%20%20%20SVC%2C%0A%20%20%20%20%20%20%20%20df_wine_predictors%2C%0A%20%20%20%20%20%20%20%20df_wine_target%2C%0A%20%20%20%20%20%20%20%20np%2C%0A%20%20%20%20%20%20%20%20pd%2C%0A%20%20%20%20%20%20%20%20plt%2C%0A%20%20%20%20%20%20%20%20train_test_split%2C%0A%20%20%20%20%20%20%20%20validation_curve%2C%0A%20%20%20%20)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Check%20the%20data%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(df_wine_predictors)%3A%0A%20%20%20%20%23%20Basic%20check%20for%20errors%20in%20the%20dataset%0A%20%20%20%20print(%22Verify%20the%20type%20of%20data%20within%20the%20columns%3A%5Cn%22)%0A%20%20%20%20print(df_wine_predictors.dtypes%2C%22%5Cn%22)%0A%20%20%20%20df_wine_predictors.columns.to_list()%0A%0A%20%20%20%20print(%22----------------------------------------%22)%0A%20%0A%20%20%20%20print(%22Check%20for%20NaN%20under%20the%20columns%3A%5Cn%22)%0A%20%20%20%20for%20column%20in%20df_wine_predictors.columns.to_list()%3A%0A%20%20%20%20%20%20%20%20print(column%2C%22%3A%22%2Cdf_wine_predictors%5Bcolumn%5D.isnull().any())%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Split%20training%20and%20testing%20sets%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(df_wine_predictors%2C%20df_wine_target%2C%20train_test_split)%3A%0A%20%20%20%20X_train%2C%20X_test%2C%20y_train%2C%20y_test%20%3D%20train_test_split(df_wine_predictors%2C%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20df_wine_target%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20test_size%3D0.33%2C%20%23%20percentage%20of%20data%20that%20goes%20into%20the%20testing%20set%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20random_state%3D42%20%23%20seed%20for%20random%20selection%20of%20data%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20%23%20visualize%0A%20%20%20%20print(%22TRAINING%20DATASET%20PREDICTORS%22)%0A%20%20%20%20print(X_train.head()%2C%20%22%5Cn%22)%0A%20%20%20%20print(%22dataframe%20size%22%2C%20X_train.shape%2C%22%5Cn%22)%0A%20%20%20%20print(%22------------------------------------------%22)%0A%20%20%20%20print(%22TRAINING%20DATASET%20TARGET%22)%0A%20%20%20%20print(y_train%2C%22%5Cn%22)%0A%20%20%20%20print()%0A%20%20%20%20print(%22------------------------------------------------------------------------------------%5Cn%22)%0A%0A%20%20%20%20print(%22TESTING%20DATASET%20PREDICTORS%22)%0A%20%20%20%20print(X_test.head())%0A%20%20%20%20print(%22dataframe%20size%22%2C%20X_test.shape%2C%22%5Cn%22)%0A%20%20%20%20print(%22------------------------------------------%22)%0A%20%20%20%20print(%22TESTING%20DATASET%20TARGET%22)%0A%20%20%20%20print(y_test.head())%0A%20%20%20%20print(%22Vector%20size%22%2C%20y_test.shape)%0A%20%20%20%20return%20X_test%2C%20X_train%2C%20y_test%2C%20y_train%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20k-fold%20Cross%20Validation%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(SVC%2C%20X_train%2C%20np%2C%20plt%2C%20validation_curve%2C%20y_train)%3A%0A%20%20%20%20%23%20interval%20of%20possible%20parameters%20%0A%20%20%20%20param_range%20%3D%20np.logspace(-7%2C%20-0.01%2C%2020)%20%0A%0A%20%20%20%20%23%20Peform%205-fold%20cross-validation%20and%20save%20training%20and%20validation%20error%0A%20%20%20%20train_scores%2C%20test_scores%20%3D%20validation_curve(%0A%20%20%20%20%20%20%20%20SVC()%2C%0A%20%20%20%20%20%20%20%20X_train%2C%20%0A%20%20%20%20%20%20%20%20y_train%2C%0A%20%20%20%20%20%20%20%20param_name%3D%22gamma%22%2C%20%23%20parameter%20to%20vary%0A%20%20%20%20%20%20%20%20param_range%3Dparam_range%2C%0A%20%20%20%20%20%20%20%20scoring%3D%22accuracy%22%2C%20%0A%20%20%20%20%20%20%20%20cv%3D5%2C%20%20%20%20%23%20number%20of%20folders%0A%20%20%20%20)%0A%0A%0A%20%20%20%20%23%20convert%20accuracy%20into%20error%0A%20%20%20%20train_error%20%3D%201-train_scores%0A%20%20%20%20validation_error%20%3D%201-test_scores%0A%0A%20%20%20%20%23%20compute%205-fold%20cross-validation%20mean%20and%20std%20of%20error%20%0A%20%20%20%20train_error_mean%20%3D%20np.mean(train_error%2C%20axis%3D1)%0A%20%20%20%20train_error_std%20%3D%20np.std(train_error%2C%20axis%3D1)%0A%20%20%20%20validation_error_mean%20%3D%20np.mean(validation_error%2C%20axis%3D1)%0A%20%20%20%20validation_error_std%20%3D%20np.std(validation_error%2C%20axis%3D1)%0A%0A%20%20%20%20%23%20visualize%0A%20%20%20%20plt.title(%22Validation%20Curve%20with%20SVM%22)%0A%20%20%20%20plt.xlabel(r%22%24%5Cgamma%24%22)%0A%20%20%20%20plt.ylabel(%22Error%20(1-accuracy)%22)%0A%20%20%20%20plt.ylim(-0.01%2C%201.1)%0A%20%20%20%20lw%20%3D%202%0A%20%20%20%20plt.semilogx(%0A%20%20%20%20%20%20%20%20param_range%2C%20train_error_mean%2C%20label%3D%22Training%20score%22%2C%20color%3D%22darkorange%22%2C%20lw%3Dlw%0A%20%20%20%20)%0A%20%20%20%20plt.fill_between(%0A%20%20%20%20%20%20%20%20param_range%2C%0A%20%20%20%20%20%20%20%20train_error_mean%20-%20train_error_std%2C%0A%20%20%20%20%20%20%20%20train_error_mean%20%2B%20train_error_std%2C%0A%20%20%20%20%20%20%20%20alpha%3D0.2%2C%0A%20%20%20%20%20%20%20%20color%3D%22darkorange%22%2C%0A%20%20%20%20%20%20%20%20lw%3Dlw%2C%0A%20%20%20%20)%0A%20%20%20%20plt.semilogx(%0A%20%20%20%20%20%20%20%20param_range%2C%20validation_error_mean%2C%20label%3D%22Cross-validation%20score%22%2C%20color%3D%22navy%22%2C%20lw%3Dlw%0A%20%20%20%20)%0A%20%20%20%20plt.fill_between(%0A%20%20%20%20%20%20%20%20param_range%2C%0A%20%20%20%20%20%20%20%20validation_error_mean%20-%20validation_error_std%2C%0A%20%20%20%20%20%20%20%20validation_error_mean%20%2B%20validation_error_std%2C%0A%20%20%20%20%20%20%20%20alpha%3D0.2%2C%0A%20%20%20%20%20%20%20%20color%3D%22navy%22%2C%0A%20%20%20%20%20%20%20%20lw%3Dlw%2C%0A%20%20%20%20)%0A%20%20%20%20plt.legend(loc%3D%22best%22)%0A%20%20%20%20plt.show()%0A%20%20%20%20return%20param_range%2C%20validation_error_mean%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Choose%20optimal%20parameter%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(np%2C%20param_range%2C%20pd%2C%20validation_error_mean)%3A%0A%20%20%20%20%23%20save%20optimal%20gamma%0A%20%20%20%20index_min%20%3D%20min(range(len(validation_error_mean))%2C%20key%3Dvalidation_error_mean.__getitem__)%0A%20%20%20%20validation_error_min%20%3D%20validation_error_mean%5Bindex_min%5D%0A%20%20%20%20gamma_opt%20%3D%20param_range%5Bindex_min%5D%20%23%20gamma%20that%20gives%20minimun%20validation%20error%0A%0A%20%20%20%20%23%20visualize%20%0A%20%20%20%20columns%20%3D%20%5B%22Mean%20validation%20error%22%2C%22gamma%22%5D%0A%20%20%20%20array%20%3D%20np.array(%5Bvalidation_error_mean%2C%20param_range%5D).transpose()%0A%0A%20%20%20%20print(%20pd.DataFrame(array%2Ccolumns%3Dcolumns)%2C%20%22%5Cn%22)%0A%20%20%20%20print(%22Minimun%20mean%20validation%20error%3A%22%2C%20validation_error_min)%0A%20%20%20%20print(%22optimal%20gamma%3A%22%2C%20gamma_opt)%0A%20%20%20%20return%20(gamma_opt%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Train%20the%20optimal%20hypothesis%20model%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(SVC%2C%20X_test%2C%20X_train%2C%20gamma_opt%2C%20y_test%2C%20y_train)%3A%0A%20%20%20%20%23%20train%20optimal%20model%20and%20evaluate%20accuracy%20%0A%20%20%20%20h_opt%20%3D%20SVC(gamma%3Dgamma_opt)%20%23%20instiate%20optimal%20model%20%0A%20%20%20%20h_opt.fit(X_train%2Cy_train)%20%23%20train%20the%20model%20to%20the%20entire%20training%20set%0A%20%20%20%20print(%22Error%20(1-Accuracy)%20of%20h_opt%20on%20testing%20data%3A%20%5Cn%20--%3E%3E%22%2C1-%20h_opt.score(X_test%2Cy_test))%0A%20%20%20%20return%20(h_opt%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Performance%20evaluation%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(ConfusionMatrixDisplay%2C%20X_test%2C%20h_opt%2C%20plt%2C%20y_test)%3A%0A%20%20%20%20%23plot%20confution%20Matrix%0A%20%20%20%20ConfusionMatrixDisplay.from_estimator(%0A%20%20%20%20%20%20%20%20h_opt%2C%20%23%20trained%20optimal%20hypothesis%20model%0A%20%20%20%20%20%20%20%20X_test%2C%0A%20%20%20%20%20%20%20%20y_test%2C%0A%20%20%20%20%20%20%20%20display_labels%3D%5B%22bad%20wine%22%2C%20%22good%20wine%22%2C%20%22excellent%20wine%22%5D%0A%20%20%20%20)%0A%20%20%20%20plt.show()%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "edit",
+            "version": "0.25.0",
+            "serverToken": "unused",
+            "config": {"ai": {"allow_provider_config": true, "custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "code_lens": true, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "compact"},
+            "layout": null,
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>

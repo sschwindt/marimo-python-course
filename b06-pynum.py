@@ -1,3 +1,11 @@
+# /// script
+# dependencies = [
+#     "marimo",
+#     "numpy",
+#     "openpyxl",
+#     "pandas",
+# ]
+# ///
 import marimo
 
 __generated_with = "0.25.0"
@@ -9,6 +17,27 @@ def _():
     import marimo as mo
 
     return (mo,)
+
+
+@app.cell(hide_code=True)
+async def _():
+    # WebAssembly (browser) version only: download the course data files
+    import sys as _sys
+
+    if _sys.platform == "emscripten":
+        import os as _os
+        from pyodide.http import pyfetch as _pyfetch
+
+        for _file in (
+            "data/pure-numbers.txt",
+        ):
+            _os.makedirs(_os.path.dirname(_file), exist_ok=True)
+            _response = await _pyfetch(
+                "https://raw.githubusercontent.com/sschwindt/marimo-python-course/main/" + _file
+            )
+            with open(_file, "wb") as _local_file:
+                _local_file.write(await _response.bytes())
+    return
 
 
 @app.cell(hide_code=True)

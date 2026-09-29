@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-CZceb_kH.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-Bam3NpBI.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-C_DwAp7Z.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-CEsLFVD9.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-D5MAsWEG.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-C6PDArdf.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>b03-pyloop</title>
+    <script type="module" crossorigin src="./assets/index-CgQsZfww.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-B0Z9INg1.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-CUdNIagt.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-BQ9S8nyo.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-Dc9HkKI2.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-CKsE8sC1.js">
+    <link rel="modulepreload" crossorigin href="./assets/schemas-BL-NsLlF.js">
+    <link rel="modulepreload" crossorigin href="./assets/isObject-BCaOs5rp.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-oX0TOjjx.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-Cmx0b_zA.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-aFmHgJZY.js">
+    <link rel="modulepreload" crossorigin href="./assets/isArrayLikeObject-DnwgSs_Z.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseMerge-CQpUq7ep.js">
+    <link rel="modulepreload" crossorigin href="./assets/objects-snlMn4yk.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-B74pBk57.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-BdZUApHd.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-Ci2dTZ72.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-B3E7otfg.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-BDbGiS7O.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-CrTnjj37.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-C8nQMsOE.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-CmBpjGXk.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-DB0hHKMi.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-ldLVeaqm.js">
+    <link rel="modulepreload" crossorigin href="./assets/fullscreen-BmzAqMKq.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CyYN7zJg.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-BBdeXCvU.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-restore-focus-B98SEiGc.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-BoklZTGL.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-rHn2EdoM.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-Wea4hZ6R.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-BFOBKCJB.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-C4-_TnkF.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-BplWpfFo.js">
+    <link rel="modulepreload" crossorigin href="./assets/circle-CeQt3rdW.js">
+    <link rel="modulepreload" crossorigin href="./assets/toast-KNfsFUiB.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-DR2Z2N4w.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-CzfpItSz.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-DKSBdWUf.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-BbJ1_N2T.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-CrkOvbyN.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-CeE3i3Qa.js">
+    <link rel="modulepreload" crossorigin href="./assets/arrays-BqUx5USx.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-Haz_uxEL.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-DsgsDslU.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-DMbg9X18.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-BDakodZ2.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-CC89xOwH.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-yTHMxhVa.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-k9DpjH68.js">
+    <link rel="modulepreload" crossorigin href="./assets/write-secret-modal-CBUZw27N.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-gbN72xHe.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-BJG-7Qob.js">
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-HclGiUj8.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BczecT6V.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BTskHGpb.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-Bj3s1hGN.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-C49f7GXV.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-BPvK7C_R.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Ccyblc8N.js">
+    <link rel="modulepreload" crossorigin href="./assets/marked.esm-B_3iMIUq.js">
+    <link rel="modulepreload" crossorigin href="./assets/strings-BHZPE0Mc.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-BN-7G8qZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-DFf033uX.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CiUBikfn.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-MRn68vX1.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Bviq_Dee.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DBqBVprh.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DueXZKz9.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-CJTNBbet.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-Ho3YdAx3.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-DucTwMkf.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-CYRiAeUx.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-BcQ8Tm3j.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-DjNf4SIX.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-RyCOE8jo.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-BhJktFeI.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-DFhUGBjO.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-DrliQ_7g.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-CMqNngzA.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right-DOPs2jx8.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-VuyoeQOD.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-EBegnOE0.js">
+    <link rel="modulepreload" crossorigin href="./assets/hat-glasses-DVgK5i5l.js">
+    <link rel="modulepreload" crossorigin href="./assets/package-BeYhVWvM.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-D9vyuMar.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-CNPGWpMu.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-Bq_nmf5u.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-D5bOh7g6.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-CLRkNgm7.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-B1vGi-z4.js">
+    <link rel="modulepreload" crossorigin href="./assets/micromark-factory-space-D9Dr-k4J.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-YOKDWASO-CaoEAGJk.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-0PFKL3SH.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-2TQenOiQ.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    
+<script data-marimo="true">
+    Object.defineProperty(window, "__MARIMO_EXPORT_CONTEXT__", {
+        value: Object.freeze({
+            trusted: true,
+            notebookCode: "import marimo\n\n__generated_with = \"0.25.0\"\napp = marimo.App()\n\n\n@app.cell\ndef _():\n    import marimo as mo\n\n    return (mo,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    # Loops and Conditional Statements\n\n    Iterate and apply conditional criteria.\n\n    \u003E **Requirements:** Make sure to understand statements as defined in the section on [Errors, Logging, and Debugging](https://hydro-informatics.com/jupyter/pyerror.html).\n\n    *Python* provides two basic types of loops to iterate through objects or functions: the `for` and the `while` loop statements. Both loop types have additional options and can be combined with conditional statements. Conditional statements evaluate *boolean* arguments (`True`/`False`) using the keywords `if: ... else: ...`. This section introduces the two loop types and conditional statements as integral parts of loops.\n\n    ## Conditional Statements (`if` - `else`)\n    Conditional statements open with an `if` keyword, followed by a test condition (e.g., `variable \u003E= 2`) and action to accomplish when the test condition is `True` ([*boolean*](https://hydro-informatics.com/python-basics/pybase.html#boolean) test result). The conditional statement can be followed by the `elif` (*else if*) and/or `else` keywords, which represent alternative tests in the case that the `if` test condition was `False`. However, when the `if` statement was `True`, none of the following statements will be evaluated.\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    variable_2_test = \"ice cream\"\n    if \"cream\" in variable_2_test:\n        print(\"It's creamy, for sure.\")\n    elif \"ice\" in variable_2_test:\n        print(\"It's cold, ice-cold cream.\")\n    else:\n        print(\"Anything but ice cream.\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    Any operator can be used in the test condition (see [operators](https://hydro-informatics.com/python-basics/pybase.html#operators)) and conditions can be nested, too.\n\n    \u003E The code blocks in the `if` - `else` statements are indented and Python uses the indentation to group statements. The same applies to loops, functions, and classes. An IDE automatically indents code, but basic text editors may not do the job. Keep in mind that wrong indentation can be an error source.\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    number_of_scoops = 3\n    if number_of_scoops \u003C= 0:\n        print(\"Why? How can you?\")\n    elif number_of_scoops \u003C 4:\n        if number_of_scoops == 1: # this is a nested if-statement\n            print(\"One is better than nothing.\")\n        else:\n            print(\"That is reasonable.\")\n    else:\n        print(\"A lot. Still reasonable. Maybe.\")\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## `for`-loop\n\n    `for` loops serve for the sequential iteration through objects such as lists or arrays. `for` loops can also be complemented with `else` statements at the end (whyever you would want to do this...).\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    for e in range(0, 8, 2):\n        print(\"e is %d now.\" % e)\n\n    flavors = [\"chocolate\", \"bread\", \"cherry\"] \n    for index in range(len(flavors)): \n        print(flavors[index])\n    else:\n        print(\" --- end of second loop.\")\n\n    # produces the same\n    for e in flavors:\n        print(e)\n    return (flavors,)\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    In many cases, it is useful to iterate not only either on the iteration number (an incrementing *integer* value) or the elements of a list (e.g., a *string* value), but both simultaneously. Both the iteration step number and the list elements can be accessed with the `enumeration` built-in function:\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(flavors):\n    for iteration_step, list_element in enumerate(flavors):\n        print(\"The list element {0} is at position number {1}.\".format(list_element, str(iteration_step)))\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## `while`-loop\n\n    `while` loops run until a test condition (expression) is `True`. Similar to the `if` statement, the test condition can be composed of just one variable or an expression including [operators](https://hydro-informatics.com/python-basics/pybase.html#operators) (e.g., `while a \u003E b`). To modify a variable within a `while` loop, use `+=` (add amount), `-=` (subtract amount), `*=` (multiply with), or `/=` (divide by). Also `while` loops can be complemented with `else` statements.\n\n    \u003E Make sure that every `while` loop can terminate \u2014 either its test condition eventually becomes `False`, or the loop contains a `break` statement. Otherwise, the script may be caught in an endless loop.\n    \"\"\")\n    return\n\n\n@app.cell\ndef _():\n    count = 10\n    while (count \u003E 7):\n        count -= 1\n        print(\"Count down %d \" % count)\n    else:\n        print(\"Mission aborted.\")\n\n    count = 0\n    while True:\n        print(\"Count up: %d \" % count)\n        count += 1 # Replaces count = count + 1 - also works with -=, *= and /=\n        if count \u003E 3:\n            break\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    ## Example\n\n    Use this code block to practice with data types, `for` loops and conditional `if` statements by modifying the variables `scoops` and `favorite_flavor`. Note the implementation of `try` and `except` statements ensures that whatever element number of `scoops` or `favorite_flavor` you define will not crash the script.\n    \"\"\")\n    return\n\n\n@app.cell\ndef _(flavors):\n    scoops = 2 # re-define the number of scoops\n    favorite_flavor = \"vanilla\" # choose your favorite flavor\n\n    size_scoops = {1: \"small\", 2: \"medium\", 3: \"this is too much ice cream\"}\n    price_scoops = {1: \"3 dollars\", 2: \"5 dollars\", 3: \"your health\"}\n    print(\"Hi,\\nI want %d scoop-s in a waffle, please.\" % scoops)\n\n    try:\n        size = \" \" + str(size_scoops[scoops])\n        price = str(price_scoops[scoops])\n    except KeyError:\n        size = \"n unavailable number of scoops\"\n        price = \"not defined\"\n\n\n    print(\"My pleasure to serve you. You have chosen a\" + size + \" ice cream. The price is \" + price + \".\")\n    print(\"Let me guess your favorite flavor. Say stop when I'm correct.\")\n    for f in flavors:\n        print(\"I guess your favorite flavor is %s.\" % f)\n        if f == favorite_flavor:\n            print(\"Stop, that\\'s it!\")\n            if f == \"bread\":\n                print(\"Sorry, this is not a bakery.\")\n            break\n    return\n\n\n@app.cell(hide_code=True)\ndef _(mo):\n    mo.md(r\"\"\"\n    \u003E **Exercise:** Practice the application of loops with the [Hydraulics (1d)](https://hydro-informatics.com/exercises/ex-ms) exercise.\n    \"\"\")\n    return\n\n\nif __name__ == \"__main__\":\n    app.run()\n",
+        }),
+        writable: false,
+        configurable: false,
+    });
+</script>
+<marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.25.0%22%0Aapp%20%3D%20marimo.App()%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%0A%20%20%20%20return%20(mo%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%20Loops%20and%20Conditional%20Statements%0A%0A%20%20%20%20Iterate%20and%20apply%20conditional%20criteria.%0A%0A%20%20%20%20%3E%20**Requirements%3A**%20Make%20sure%20to%20understand%20statements%20as%20defined%20in%20the%20section%20on%20%5BErrors%2C%20Logging%2C%20and%20Debugging%5D(https%3A%2F%2Fhydro-informatics.com%2Fjupyter%2Fpyerror.html).%0A%0A%20%20%20%20*Python*%20provides%20two%20basic%20types%20of%20loops%20to%20iterate%20through%20objects%20or%20functions%3A%20the%20%60for%60%20and%20the%20%60while%60%20loop%20statements.%20Both%20loop%20types%20have%20additional%20options%20and%20can%20be%20combined%20with%20conditional%20statements.%20Conditional%20statements%20evaluate%20*boolean*%20arguments%20(%60True%60%2F%60False%60)%20using%20the%20keywords%20%60if%3A%20...%20else%3A%20...%60.%20This%20section%20introduces%20the%20two%20loop%20types%20and%20conditional%20statements%20as%20integral%20parts%20of%20loops.%0A%0A%20%20%20%20%23%23%20Conditional%20Statements%20(%60if%60%20-%20%60else%60)%0A%20%20%20%20Conditional%20statements%20open%20with%20an%20%60if%60%20keyword%2C%20followed%20by%20a%20test%20condition%20(e.g.%2C%20%60variable%20%3E%3D%202%60)%20and%20action%20to%20accomplish%20when%20the%20test%20condition%20is%20%60True%60%20(%5B*boolean*%5D(https%3A%2F%2Fhydro-informatics.com%2Fpython-basics%2Fpybase.html%23boolean)%20test%20result).%20The%20conditional%20statement%20can%20be%20followed%20by%20the%20%60elif%60%20(*else%20if*)%20and%2For%20%60else%60%20keywords%2C%20which%20represent%20alternative%20tests%20in%20the%20case%20that%20the%20%60if%60%20test%20condition%20was%20%60False%60.%20However%2C%20when%20the%20%60if%60%20statement%20was%20%60True%60%2C%20none%20of%20the%20following%20statements%20will%20be%20evaluated.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20variable_2_test%20%3D%20%22ice%20cream%22%0A%20%20%20%20if%20%22cream%22%20in%20variable_2_test%3A%0A%20%20%20%20%20%20%20%20print(%22It's%20creamy%2C%20for%20sure.%22)%0A%20%20%20%20elif%20%22ice%22%20in%20variable_2_test%3A%0A%20%20%20%20%20%20%20%20print(%22It's%20cold%2C%20ice-cold%20cream.%22)%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print(%22Anything%20but%20ice%20cream.%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20Any%20operator%20can%20be%20used%20in%20the%20test%20condition%20(see%20%5Boperators%5D(https%3A%2F%2Fhydro-informatics.com%2Fpython-basics%2Fpybase.html%23operators))%20and%20conditions%20can%20be%20nested%2C%20too.%0A%0A%20%20%20%20%3E%20The%20code%20blocks%20in%20the%20%60if%60%20-%20%60else%60%20statements%20are%20indented%20and%20Python%20uses%20the%20indentation%20to%20group%20statements.%20The%20same%20applies%20to%20loops%2C%20functions%2C%20and%20classes.%20An%20IDE%20automatically%20indents%20code%2C%20but%20basic%20text%20editors%20may%20not%20do%20the%20job.%20Keep%20in%20mind%20that%20wrong%20indentation%20can%20be%20an%20error%20source.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20number_of_scoops%20%3D%203%0A%20%20%20%20if%20number_of_scoops%20%3C%3D%200%3A%0A%20%20%20%20%20%20%20%20print(%22Why%3F%20How%20can%20you%3F%22)%0A%20%20%20%20elif%20number_of_scoops%20%3C%204%3A%0A%20%20%20%20%20%20%20%20if%20number_of_scoops%20%3D%3D%201%3A%20%23%20this%20is%20a%20nested%20if-statement%0A%20%20%20%20%20%20%20%20%20%20%20%20print(%22One%20is%20better%20than%20nothing.%22)%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20print(%22That%20is%20reasonable.%22)%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print(%22A%20lot.%20Still%20reasonable.%20Maybe.%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20%60for%60-loop%0A%0A%20%20%20%20%60for%60%20loops%20serve%20for%20the%20sequential%20iteration%20through%20objects%20such%20as%20lists%20or%20arrays.%20%60for%60%20loops%20can%20also%20be%20complemented%20with%20%60else%60%20statements%20at%20the%20end%20(whyever%20you%20would%20want%20to%20do%20this...).%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20for%20e%20in%20range(0%2C%208%2C%202)%3A%0A%20%20%20%20%20%20%20%20print(%22e%20is%20%25d%20now.%22%20%25%20e)%0A%0A%20%20%20%20flavors%20%3D%20%5B%22chocolate%22%2C%20%22bread%22%2C%20%22cherry%22%5D%20%0A%20%20%20%20for%20index%20in%20range(len(flavors))%3A%20%0A%20%20%20%20%20%20%20%20print(flavors%5Bindex%5D)%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print(%22%20---%20end%20of%20second%20loop.%22)%0A%0A%20%20%20%20%23%20produces%20the%20same%0A%20%20%20%20for%20e%20in%20flavors%3A%0A%20%20%20%20%20%20%20%20print(e)%0A%20%20%20%20return%20(flavors%2C)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20In%20many%20cases%2C%20it%20is%20useful%20to%20iterate%20not%20only%20either%20on%20the%20iteration%20number%20(an%20incrementing%20*integer*%20value)%20or%20the%20elements%20of%20a%20list%20(e.g.%2C%20a%20*string*%20value)%2C%20but%20both%20simultaneously.%20Both%20the%20iteration%20step%20number%20and%20the%20list%20elements%20can%20be%20accessed%20with%20the%20%60enumeration%60%20built-in%20function%3A%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(flavors)%3A%0A%20%20%20%20for%20iteration_step%2C%20list_element%20in%20enumerate(flavors)%3A%0A%20%20%20%20%20%20%20%20print(%22The%20list%20element%20%7B0%7D%20is%20at%20position%20number%20%7B1%7D.%22.format(list_element%2C%20str(iteration_step)))%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20%60while%60-loop%0A%0A%20%20%20%20%60while%60%20loops%20run%20until%20a%20test%20condition%20(expression)%20is%20%60True%60.%20Similar%20to%20the%20%60if%60%20statement%2C%20the%20test%20condition%20can%20be%20composed%20of%20just%20one%20variable%20or%20an%20expression%20including%20%5Boperators%5D(https%3A%2F%2Fhydro-informatics.com%2Fpython-basics%2Fpybase.html%23operators)%20(e.g.%2C%20%60while%20a%20%3E%20b%60).%20To%20modify%20a%20variable%20within%20a%20%60while%60%20loop%2C%20use%20%60%2B%3D%60%20(add%20amount)%2C%20%60-%3D%60%20(subtract%20amount)%2C%20%60*%3D%60%20(multiply%20with)%2C%20or%20%60%2F%3D%60%20(divide%20by).%20Also%20%60while%60%20loops%20can%20be%20complemented%20with%20%60else%60%20statements.%0A%0A%20%20%20%20%3E%20Make%20sure%20that%20every%20%60while%60%20loop%20can%20terminate%20%E2%80%94%20either%20its%20test%20condition%20eventually%20becomes%20%60False%60%2C%20or%20the%20loop%20contains%20a%20%60break%60%20statement.%20Otherwise%2C%20the%20script%20may%20be%20caught%20in%20an%20endless%20loop.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_()%3A%0A%20%20%20%20count%20%3D%2010%0A%20%20%20%20while%20(count%20%3E%207)%3A%0A%20%20%20%20%20%20%20%20count%20-%3D%201%0A%20%20%20%20%20%20%20%20print(%22Count%20down%20%25d%20%22%20%25%20count)%0A%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20print(%22Mission%20aborted.%22)%0A%0A%20%20%20%20count%20%3D%200%0A%20%20%20%20while%20True%3A%0A%20%20%20%20%20%20%20%20print(%22Count%20up%3A%20%25d%20%22%20%25%20count)%0A%20%20%20%20%20%20%20%20count%20%2B%3D%201%20%23%20Replaces%20count%20%3D%20count%20%2B%201%20-%20also%20works%20with%20-%3D%2C%20*%3D%20and%20%2F%3D%0A%20%20%20%20%20%20%20%20if%20count%20%3E%203%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20break%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%23%23%20Example%0A%0A%20%20%20%20Use%20this%20code%20block%20to%20practice%20with%20data%20types%2C%20%60for%60%20loops%20and%20conditional%20%60if%60%20statements%20by%20modifying%20the%20variables%20%60scoops%60%20and%20%60favorite_flavor%60.%20Note%20the%20implementation%20of%20%60try%60%20and%20%60except%60%20statements%20ensures%20that%20whatever%20element%20number%20of%20%60scoops%60%20or%20%60favorite_flavor%60%20you%20define%20will%20not%20crash%20the%20script.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell%0Adef%20_(flavors)%3A%0A%20%20%20%20scoops%20%3D%202%20%23%20re-define%20the%20number%20of%20scoops%0A%20%20%20%20favorite_flavor%20%3D%20%22vanilla%22%20%23%20choose%20your%20favorite%20flavor%0A%0A%20%20%20%20size_scoops%20%3D%20%7B1%3A%20%22small%22%2C%202%3A%20%22medium%22%2C%203%3A%20%22this%20is%20too%20much%20ice%20cream%22%7D%0A%20%20%20%20price_scoops%20%3D%20%7B1%3A%20%223%20dollars%22%2C%202%3A%20%225%20dollars%22%2C%203%3A%20%22your%20health%22%7D%0A%20%20%20%20print(%22Hi%2C%5CnI%20want%20%25d%20scoop-s%20in%20a%20waffle%2C%20please.%22%20%25%20scoops)%0A%0A%20%20%20%20try%3A%0A%20%20%20%20%20%20%20%20size%20%3D%20%22%20%22%20%2B%20str(size_scoops%5Bscoops%5D)%0A%20%20%20%20%20%20%20%20price%20%3D%20str(price_scoops%5Bscoops%5D)%0A%20%20%20%20except%20KeyError%3A%0A%20%20%20%20%20%20%20%20size%20%3D%20%22n%20unavailable%20number%20of%20scoops%22%0A%20%20%20%20%20%20%20%20price%20%3D%20%22not%20defined%22%0A%0A%0A%20%20%20%20print(%22My%20pleasure%20to%20serve%20you.%20You%20have%20chosen%20a%22%20%2B%20size%20%2B%20%22%20ice%20cream.%20The%20price%20is%20%22%20%2B%20price%20%2B%20%22.%22)%0A%20%20%20%20print(%22Let%20me%20guess%20your%20favorite%20flavor.%20Say%20stop%20when%20I'm%20correct.%22)%0A%20%20%20%20for%20f%20in%20flavors%3A%0A%20%20%20%20%20%20%20%20print(%22I%20guess%20your%20favorite%20flavor%20is%20%25s.%22%20%25%20f)%0A%20%20%20%20%20%20%20%20if%20f%20%3D%3D%20favorite_flavor%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20print(%22Stop%2C%20that%5C's%20it!%22)%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20f%20%3D%3D%20%22bread%22%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20print(%22Sorry%2C%20this%20is%20not%20a%20bakery.%22)%0A%20%20%20%20%20%20%20%20%20%20%20%20break%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(r%22%22%22%0A%20%20%20%20%3E%20**Exercise%3A**%20Practice%20the%20application%20of%20loops%20with%20the%20%5BHydraulics%20(1d)%5D(https%3A%2F%2Fhydro-informatics.com%2Fexercises%2Fex-ms)%20exercise.%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <script data-marimo="true">
+      Object.defineProperty(window, "__MARIMO_MOUNT_CONFIG__", {
+        value: Object.freeze({
+            "filename": "notebook.py",
+            "cwd": "",
+            "lspWorkspace": null,
+            "mode": "edit",
+            "version": "0.25.0",
+            "serverToken": "unused",
+            "config": {"ai": {"allow_provider_config": true, "custom_providers": {}, "enabled": true, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "auto_close_pairs": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "code_lens": true, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": true, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "show_tracebacks": false, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "compact"},
+            "layout": null,
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null
+        }),
+        writable: false,
+        configurable: false,
+      });
+    </script>
+  </body>
+</html>
