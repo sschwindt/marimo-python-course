@@ -20,6 +20,8 @@ parts/
 sdist/
 var/
 wheels/
+# marimo's WebAssembly export bundles local packages (fun/) here
+!public/wheels/
 share/python-wheels/
 *.egg-info/
 .installed.cfg

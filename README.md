@@ -69,13 +69,13 @@ The `*.wasm.html` files in the repository root run the notebooks in the browser 
 
 `b11-gui.py` (tkinter), `geo-arcpy.py` (arcpy), and `geo01` to `geo03` (GDAL's `osgeo`) cannot run in Pyodide and have no browser version.
 
-To re-export a notebook:
+To re-export all browser versions (e.g., after editing a notebook or `fun/`):
 
 ```
-marimo export html-wasm b06-pynum.py -o b06-pynum.wasm.html --mode edit -f
+python tools/export_wasm.py marimo
 ```
 
-Every export empties `public/wheels/`, where marimo bundles the local `fun` package for `b06-pynum` and `bedload-exercise`. After exporting, re-export these two notebooks into separate folders and copy their wheels back into `public/wheels/`.
+marimo bundles the local `fun` package (used by `b06-pynum` and `bedload-exercise`) as wheels in `public/wheels/`, and every single `marimo export html-wasm` call empties that folder. The script therefore exports each notebook separately, merges the wheels, and removes stale ones. Commit `public/wheels/` together with the `*.wasm.html` pages, otherwise `import fun` fails in the browser.
 
 ## Updating from the Jupyter notebooks
 
