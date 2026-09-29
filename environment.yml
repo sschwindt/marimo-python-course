@@ -1,0 +1,41 @@
+name: hy-marimo
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  - python=3.11
+
+  # Notebook runtime
+  - marimo
+
+  # Core scientific stack
+  - numpy
+  - pandas
+  - matplotlib
+  - scipy
+
+  # Machine learning
+  - scikit-learn
+
+  # Geospatial
+  - gdal
+  - geopandas
+  - rasterio
+  - fiona
+  - shapely
+  - pyproj
+  - rasterstats
+  - scikit-image      # skimage.graph used in geo02-raster
+
+  # Visualisation extras
+  - plotly
+  - cmocean
+
+  # File I/O
+  - openpyxl
+
+  # pip-only packages
+  - pip
+  - pip:
+    - flusstools
